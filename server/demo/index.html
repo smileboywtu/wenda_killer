@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.col {
+	float:left;
+	width:30%;
+	left:20%;
+}
+</style>
+</head>
+
+<body>
+<div>
+  <h1>【WENDA KILLER】人工智能答题，已包含西瓜视频、花椒直播、冲顶大会</h1>
+  <h2><a href="https://github.com/kakalote2008/wenda_killer">https://github.com/kakalote2008/wenda_killer</a><h2>
+</div>
+
+<div class=col>
+  <h2>西瓜视频</h2>
+  <ul id=xigua>
+  </ul>
+</div>
+
+
+<div class=col>
+  <h2>花椒直播</h2>
+  <ul id=huajiao>
+  </ul>
+</div>
+
+<div class=col>
+  <h2>冲顶大会</h2>
+  <ul id=cddh>
+  </ul>
+</div>
+
+<script src=/eventsource-polyfill.js></script>
+
+<script>
+function subscribe_xigua(es, ul) {
+  es.addEventListener('xigua', function (e) {
+    var li = document.createElement("LI");
+    li.appendChild(document.createTextNode(e.data));
+    document.getElementById("xigua").appendChild(li);
+  });
+}
+function subscribe_huajiao(es, ul) {
+  es.addEventListener('huajiao', function (e) {
+    var li = document.createElement("LI");
+    li.appendChild(document.createTextNode(e.data));
+    document.getElementById("huajiao").appendChild(li);
+  });
+}
+function subscribe_cddh(es, ul) {
+  es.addEventListener('cddh', function (e) {
+    var li = document.createElement("LI");
+    li.appendChild(document.createTextNode(e.data));
+    document.getElementById("cddh").appendChild(li);
+  });
+}
+
+subscribe_xigua(new EventSourcePolyfill('/sse'), document.getElementById('xigua'));
+subscribe_huajiao(new EventSourcePolyfill('/sse'), document.getElementById('huajiao'));
+subscribe_cddh(new EventSourcePolyfill('/sse'), document.getElementById('cddh'));
+</script>
+</body>
