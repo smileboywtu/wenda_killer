@@ -16,7 +16,7 @@ WEB版本(http://wenda.woyaoxiege.com/)
 
 cd server
 npm install 
-node demo/sse-server.js
+forever start demo/sse-server.js
 
 # 参考项目
 [eventsource](https://github.com/EventSource/eventsource)
